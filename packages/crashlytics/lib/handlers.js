@@ -28,6 +28,11 @@ export function createNativeErrorObj(error, stackFrames, isUnhandledRejection) {
   nativeObj.frames = [];
   for (let i = 0; i < stackFrames.length; i++) {
     const { columnNumber, lineNumber, fileName, functionName, source } = stackFrames[i];
+    // Guard logException
+    if (functionName.toLowerCase().indexOf('logexception') > -1) {
+      continue;
+    }
+
     let fileNameParsed = '<unknown>';
     if (fileName) {
       const subStrLen = fileName.indexOf('?');
@@ -42,7 +47,7 @@ export function createNativeErrorObj(error, stackFrames, isUnhandledRejection) {
       src: source,
       line: lineNumber || 0,
       col: columnNumber || 0,
-      fn: functionName || '<unknown>',
+      fn: `${nativeObj.message} ${functionName || '<unknown>'}`,
       file: `${fileNameParsed}:${lineNumber || 0}:${columnNumber || 0}`,
     });
   }
