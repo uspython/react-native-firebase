@@ -90,6 +90,8 @@ preloaded
 programmatically
 PRs
 PubSub
+qa
+react-native-firebase
 realtime
 Realtime
 remarketing
@@ -104,6 +106,7 @@ SDK.
 SDKs
 SDKs.
 SHA1
+SHA-256
 SMS
 SVG
 TestLab
@@ -123,4 +126,5 @@ v6
 VSCode
 Wix
 Xcode
+Xcode.
 lifecycle
